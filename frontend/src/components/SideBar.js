@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { RiDashboardLine } from 'react-icons/ri';
 import { IoHardwareChipOutline } from 'react-icons/io5';
-import { CiViewList, CiBowlNoodles, CiWheat } from 'react-icons/ci';
+import { CiViewList } from 'react-icons/ci';
 import { BsFolder, BsTools } from 'react-icons/bs';
-import { BiSolidComponent, BiSolidContact, BiLogOut } from 'react-icons/bi';
+import { BiSolidContact, BiLogOut } from 'react-icons/bi';
 import { AiOutlinePieChart } from 'react-icons/ai';
 
 const SideBar = () => {

@@ -49,16 +49,6 @@ const Categories = () => {
               <div className="cat-listings-main">
                 {categories.map((category) => (
                   <div className="cat-listings" key={category._id}>
-                    {/* {category.image && (
-                      <img
-                        src={`data:${
-                          category.image.contentType
-                        };base64,${category.image.data.toString('base64')}`}
-                        alt={category.name}
-                        style={{ maxWidth: '200px' }}
-                      />
-                    )} */}
-
                     <p>{category.name}</p>
                     <div className="edit-del">
                       <AiFillEdit />
