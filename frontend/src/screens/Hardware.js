@@ -1,18 +1,18 @@
 import React from 'react';
 import SideBar from '../components/SideBar';
 
-const Salt = () => {
+const Hardware = () => {
   return (
     <div className="main-content">
       <SideBar />
 
       <div className="content-wrapper">
         <div className="section-title">
-          <h2>Salt Products</h2>
+          <h2>Hardware Products</h2>
         </div>
       </div>
     </div>
   );
 };
 
-export default Salt;
+export default Hardware;

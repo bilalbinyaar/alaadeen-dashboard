@@ -3,11 +3,11 @@ import { Route, Navigate, Routes } from 'react-router-dom';
 import Dashboard from './screens/Dashboard';
 import Categories from './screens/Categories';
 import AllProducts from './screens/AllProducts';
-import Salt from './screens/Salt';
-import Pasta from './screens/Pasta';
-import Wheat from './screens/Wheat';
 import WebComponents from './screens/WebComponents';
 import Contacts from './screens/Contact';
+import Tools from './screens/Tools';
+import Parts from './screens/Parts';
+import Hardware from './screens/Hardware';
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -17,7 +17,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    if (username === 'boomplus' && password === 'boomplus') {
+    if (username === 'alaadeen' && password === 'alaadeen') {
       setIsLoggedIn(true);
       localStorage.setItem('isLoggedIn', 'true');
     } else {
@@ -55,9 +55,9 @@ function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/categories" element={<Categories />} />
       <Route path="/products" element={<AllProducts />} />
-      <Route path="/salt" element={<Salt />} />
-      <Route path="/pasta" element={<Pasta />} />
-      <Route path="/wheat" element={<Wheat />} />
+      <Route path="/tools" element={<Tools />} />
+      <Route path="/parts" element={<Parts />} />
+      <Route path="/hardware" element={<Hardware />} />
       <Route path="/components" element={<WebComponents />} />
       <Route path="/contacts" element={<Contacts />} />
     </Routes>

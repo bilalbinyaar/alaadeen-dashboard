@@ -8,9 +8,9 @@
 }
 
 :root {
-  --primary-color: #206a5d;
-  --secondary-color: #1b1c25;
-  --light-color: #ebecf1;
+  --primary-color: #3c79f5;
+  --secondary-color: #282c35;
+  --light-color: #ffffff;
 }
 
 body {
@@ -274,4 +274,9 @@ input[type='file'] {
 .modal-buttons button:hover {
   background-color: var(--secondary-color);
   color: var(--light-color);
+}
+
+.edit-del svg {
+  margin-left: 2rem;
+  cursor: pointer;
 }
