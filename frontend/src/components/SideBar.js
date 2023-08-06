@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { RiDashboardLine } from 'react-icons/ri';
-import { IoHardwareChipOutline } from 'react-icons/io5';
-import { CiViewList } from 'react-icons/ci';
-import { BsFolder, BsTools } from 'react-icons/bs';
-import { BiSolidContact, BiLogOut } from 'react-icons/bi';
-import { AiOutlinePieChart } from 'react-icons/ai';
+import { PiBowlFoodFill } from 'react-icons/pi';
+import { CiViewList, CiBowlNoodles, CiWheat } from 'react-icons/ci';
+import { BsFolder } from 'react-icons/bs';
+import { BiSolidComponent, BiSolidContact, BiLogOut } from 'react-icons/bi';
 
 const SideBar = () => {
   const location = useLocation();
@@ -15,14 +14,10 @@ const SideBar = () => {
     { title: 'Dashboard', path: '/dashboard', icon: <RiDashboardLine /> },
     { title: 'Categories', path: '/categories', icon: <CiViewList /> },
     { title: 'All Products', path: '/products', icon: <BsFolder /> },
-    { title: 'Tools Products', path: '/tools', icon: <BsTools /> },
-    { title: 'Parts Products', path: '/parts', icon: <AiOutlinePieChart /> },
-    {
-      title: 'Hardware Products',
-      path: '/hardware',
-      icon: <IoHardwareChipOutline />,
-    },
-    // { title: 'Components', path: '/components', icon: <BiSolidComponent /> },
+    { title: 'Salt Products', path: '/salt', icon: <PiBowlFoodFill /> },
+    { title: 'Pasta Products', path: '/pasta', icon: <CiBowlNoodles /> },
+    { title: 'Wheat Products', path: '/wheat', icon: <CiWheat /> },
+    { title: 'Components', path: '/components', icon: <BiSolidComponent /> },
     { title: 'Contacts', path: '/contacts', icon: <BiSolidContact /> },
     // { title: 'Logout', path: '/', icon: <BiLogOut /> },
   ];
