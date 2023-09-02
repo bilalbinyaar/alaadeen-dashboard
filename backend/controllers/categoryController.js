@@ -93,7 +93,6 @@ exports.singleCategory = async (req, res) => {
   }
 };
 
-
 exports.deleteCategoryController = async (req, res) => {
   try {
     const { id } = req.params;
@@ -121,5 +120,19 @@ exports.deleteCategoryController = async (req, res) => {
       error,
       message: 'Error while deleting category',
     });
+  }
+};
+
+// NEW CODE FOR CATEGORY PRODUCTS FETCHING
+
+exports.getCategoryIdByName = async (name) => {
+  try {
+    const category = await CategoryModel.findOne({ name });
+    if (!category) {
+      return null;
+    }
+    return category._id;
+  } catch (error) {
+    throw error;
   }
 };

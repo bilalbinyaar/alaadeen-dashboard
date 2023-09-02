@@ -2,12 +2,12 @@
 
 const mongoose = require('mongoose');
 
-const username = 'dual';
-const password = 'itisdual';
-const clusterName = 'cluster007';
-// const dbName = 'your_database_name';
+const username = 'alaadeen';
+const password = 'new-alaadeen';
+const clusterName = 'clusteralaadeen';
 
-const uri = `mongodb+srv://${username}:${password}@${clusterName}.tbac97p.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${username}:${password}@${clusterName}.4oqg8rv.mongodb.net/?retryWrites=true&w=majority`;
+
 const connectDB = async () => {
   try {
     await mongoose.connect(uri, {
