@@ -2,17 +2,13 @@ import React, { useEffect, useState } from 'react';
 import SideBar from '../components/SideBar';
 import { Link } from 'react-router-dom';
 
-const Wheat = () => {
-  const [wheatFlourProducts, setWheatFlourProducts] = useState([]);
-
+const Tools = () => {
+  const [toolsProducts, setToolsProducts] = useState([]);
   useEffect(() => {
-    // Fetch products with the category of "Wheat Flour"
-    fetch('http://localhost:5000/api/product/wheat-flour-products')
+    fetch('http://localhost:5000/api/product/tools-products')
       .then((response) => response.json())
-      .then((data) => setWheatFlourProducts(data.products))
-      .catch((error) =>
-        console.error('Error fetching wheat flour products:', error)
-      );
+      .then((data) => setToolsProducts(data.products))
+      .catch((error) => console.error('Error fetching tools products:', error));
   }, []);
   return (
     <div className="main-content">
@@ -20,19 +16,19 @@ const Wheat = () => {
 
       <div className="content-wrapper">
         <div className="section-title">
-          <h2>Wheat Products</h2>
+          <h2>Tools Products</h2>
         </div>
 
         <div className="content-inner">
           <div className="categories-content">
             <div className="upper-content">
-              <h4>These are the all listed wheat products</h4>
+              <h4>These are the all listed tools products</h4>
               <button hidden>Add New</button>
             </div>
 
             <div className="body-content">
               <div className="product-card-listings-main">
-                {wheatFlourProducts?.map((product) => (
+                {toolsProducts?.map((product) => (
                   <div
                     className="product-card-listings-inner"
                     key={product._id}
@@ -79,7 +75,7 @@ const Wheat = () => {
                       </div>
                       <div className="edit-del edit-del-prods">
                         <Link
-                          to={`/wheat/${product.slug}`}
+                          to={`/tools/${product.slug}`}
                           className="product-link"
                         >
                           <button>Edit</button>
@@ -97,4 +93,4 @@ const Wheat = () => {
   );
 };
 
-export default Wheat;
+export default Tools;

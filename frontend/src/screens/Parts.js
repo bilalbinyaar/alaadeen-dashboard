@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import SideBar from '../components/SideBar';
 import { Link } from 'react-router-dom';
 
-const Pasta = () => {
-  const [pastaProducts, setPastaProducts] = useState([]);
+const Parts = () => {
+  const [partsProducts, setPartsProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/product/pasta-products')
+    fetch('http://localhost:5000/api/product/parts-products')
       .then((response) => response.json())
-      .then((data) => setPastaProducts(data.products))
-      .catch((error) => console.error('Error fetching pasta products:', error));
+      .then((data) => setPartsProducts(data.products))
+      .catch((error) => console.error('Error fetching parts products:', error));
   }, []);
   return (
     <div className="main-content">
@@ -17,19 +17,19 @@ const Pasta = () => {
 
       <div className="content-wrapper">
         <div className="section-title">
-          <h2>Pasta Products</h2>
+          <h2>Parts Products</h2>
         </div>
 
         <div className="content-inner">
           <div className="categories-content">
             <div className="upper-content">
-              <h4>These are the all listed pasta products</h4>
+              <h4>These are the all listed parts products</h4>
               <button hidden>Add New</button>
             </div>
 
             <div className="body-content">
               <div className="product-card-listings-main">
-                {pastaProducts?.map((product) => (
+                {partsProducts?.map((product) => (
                   <div
                     className="product-card-listings-inner"
                     key={product._id}
@@ -76,7 +76,7 @@ const Pasta = () => {
                       </div>
                       <div className="edit-del edit-del-prods">
                         <Link
-                          to={`/pasta/${product.slug}`}
+                          to={`/parts/${product.slug}`}
                           className="product-link"
                         >
                           <button>Edit</button>
@@ -94,4 +94,4 @@ const Pasta = () => {
   );
 };
 
-export default Pasta;
+export default Parts;

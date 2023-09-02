@@ -1,7 +1,7 @@
-const WheatFeatureImageModel = require('../schema/WheatFeatureImageModel.js');
+const PartsFeatureImageModel = require('../schema/PartsFeatureImageModel.js');
 const fs = require('fs');
 
-exports.uploadWheatFeatureImage = async (req, res) => {
+exports.uploadPartsFeatureImage = async (req, res) => {
   try {
     const { image } = req.files;
 
@@ -11,48 +11,48 @@ exports.uploadWheatFeatureImage = async (req, res) => {
         .send({ error: 'Valid image is required and should be less than 1MB' });
     }
 
-    const wheatFeatureImage = new WheatFeatureImageModel({
+    const partsFeatureImage = new PartsFeatureImageModel({
       data: fs.readFileSync(image.path),
       contentType: image.contentType,
     });
 
-    await wheatFeatureImage.save();
+    await partsFeatureImage.save();
 
     res.status(201).send({
       success: true,
-      message: 'Wheat Feature Image Uploaded Successfully',
-      wheatFeatureImage,
+      message: 'Parts Feature Image Uploaded Successfully',
+      partsFeatureImage,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: 'Error uploading wheat feature image',
+      message: 'Error uploading parts feature image',
     });
   }
 };
 
-exports.getWheatFeatureImage = async (req, res) => {
+exports.getPartsFeatureImage = async (req, res) => {
   try {
-    const wheatFeatureImage = await WheatFeatureImageModel.findOne();
-    if (!wheatFeatureImage) {
-      return res.status(404).send({ message: 'Wheat Feature Image not found' });
+    const partsFeatureImage = await PartsFeatureImageModel.findOne();
+    if (!partsFeatureImage) {
+      return res.status(404).send({ message: 'Parts Feature Image not found' });
     }
 
-    res.set('Content-type', wheatFeatureImage.contentType);
-    return res.status(200).send(wheatFeatureImage.data);
+    res.set('Content-type', partsFeatureImage.contentType);
+    return res.status(200).send(partsFeatureImage.data);
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: 'Error getting wheat feature image',
+      message: 'Error getting parts feature image',
     });
   }
 };
 
-exports.replaceWheatFeatureImage = async (req, res) => {
+exports.replacePartsFeatureImage = async (req, res) => {
   try {
     const { image } = req.files;
 
@@ -60,7 +60,7 @@ exports.replaceWheatFeatureImage = async (req, res) => {
       return res.status(400).send({ error: 'Invalid image' });
     }
 
-    const existingImage = await WheatFeatureImageModel.findOne();
+    const existingImage = await PartsFeatureImageModel.findOne();
 
     if (!existingImage) {
       return res.status(404).send({ error: 'Image not found' });

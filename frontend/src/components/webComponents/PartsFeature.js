@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SaltFeatureImageModal from '../SaltFeatureImageModal';
+import PartsFeatureImageModal from '../PartsFeatureImageModal';
 
-const SaltFeature = () => {
+const PartsFeature = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [saltFeatureImage, setSaltFeatureImage] = useState(null);
+  const [partsFeatureImage, setPartsFeatureImage] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -16,7 +16,7 @@ const SaltFeature = () => {
   };
 
   useEffect(() => {
-    fetchSaltFeatureImage();
+    fetchPartsFeatureImage();
   }, []);
 
   const handleImageChange = (event) => {
@@ -33,7 +33,7 @@ const SaltFeature = () => {
 
     axios
       .post(
-        'http://localhost:5000/api/salt-feature-image/upload-salt-feature-image',
+        'http://localhost:5000/api/parts-feature-image/upload-parts-feature-image',
         formData,
         {
           headers: {
@@ -43,17 +43,19 @@ const SaltFeature = () => {
       )
       .then((response) => {
         console.log('Image uploaded successfully:', response.data);
-        fetchSaltFeatureImage();
+        handleCloseModal();
+
+        fetchPartsFeatureImage();
       })
       .catch((error) => {
         console.error('Error uploading image:', error);
       });
   };
 
-  const fetchSaltFeatureImage = () => {
+  const fetchPartsFeatureImage = () => {
     axios
       .get(
-        'http://localhost:5000/api/salt-feature-image/get-salt-feature-image',
+        'http://localhost:5000/api/parts-feature-image/get-parts-feature-image',
         {
           responseType: 'arraybuffer',
         }
@@ -62,10 +64,10 @@ const SaltFeature = () => {
         const imageBlob = new Blob([response.data], {
           type: response.headers['content-type'],
         });
-        setSaltFeatureImage(URL.createObjectURL(imageBlob));
+        setPartsFeatureImage(URL.createObjectURL(imageBlob));
       })
       .catch((error) => {
-        console.error('Error fetching salt feature image:', error);
+        console.error('Error fetching parts feature image:', error);
       });
   };
 
@@ -79,7 +81,7 @@ const SaltFeature = () => {
 
     axios
       .put(
-        'http://localhost:5000/api/salt-feature-image/replace-salt-feature-image',
+        'http://localhost:5000/api/parts-feature-image/replace-parts-feature-image',
         formData,
         {
           headers: {
@@ -89,7 +91,7 @@ const SaltFeature = () => {
       )
       .then((response) => {
         console.log('Image replaced successfully:', response.data);
-        fetchSaltFeatureImage();
+        fetchPartsFeatureImage();
         handleCloseModal();
       })
       .catch((error) => {
@@ -99,12 +101,13 @@ const SaltFeature = () => {
 
   return (
     <div className="listed-components">
-      {/* SALT FEATURE IMAGE */}
       <div className="single-component" onClick={handleOpenModal}>
-        <h4>Salt Feature Image</h4>
-        {saltFeatureImage && <img src={saltFeatureImage} alt="Salt Feature" />}
+        <h4>Parts Feature Image</h4>
+        {partsFeatureImage && (
+          <img src={partsFeatureImage} alt="Parts Feature" />
+        )}
       </div>
-      <SaltFeatureImageModal
+      <PartsFeatureImageModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         handleImageChange={handleImageChange}
@@ -115,4 +118,4 @@ const SaltFeature = () => {
   );
 };
 
-export default SaltFeature;
+export default PartsFeature;

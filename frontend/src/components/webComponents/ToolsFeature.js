@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import WheatFeatureImageModal from '../WheatFeatureImageModal';
+import ToolsFeatureImageModal from '../ToolsFeatureImageModal';
 
-const WheatFeature = () => {
+const ToolsFeature = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [wheatFeatureImage, setWheatFeatureImage] = useState(null);
+  const [toolsFeatureImage, setToolsFeatureImage] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -16,7 +16,7 @@ const WheatFeature = () => {
   };
 
   useEffect(() => {
-    fetchWheatFeatureImage();
+    fetchToolsFeatureImage();
   }, []);
 
   const handleImageChange = (event) => {
@@ -33,7 +33,7 @@ const WheatFeature = () => {
 
     axios
       .post(
-        'http://localhost:5000/api/wheat-feature-image/upload-wheat-feature-image',
+        'http://localhost:5000/api/tools-feature-image/upload-tools-feature-image',
         formData,
         {
           headers: {
@@ -43,19 +43,17 @@ const WheatFeature = () => {
       )
       .then((response) => {
         console.log('Image uploaded successfully:', response.data);
-        handleCloseModal();
-
-        fetchWheatFeatureImage();
+        fetchToolsFeatureImage();
       })
       .catch((error) => {
         console.error('Error uploading image:', error);
       });
   };
 
-  const fetchWheatFeatureImage = () => {
+  const fetchToolsFeatureImage = () => {
     axios
       .get(
-        'http://localhost:5000/api/wheat-feature-image/get-wheat-feature-image',
+        'http://localhost:5000/api/tools-feature-image/get-tools-feature-image',
         {
           responseType: 'arraybuffer',
         }
@@ -64,10 +62,10 @@ const WheatFeature = () => {
         const imageBlob = new Blob([response.data], {
           type: response.headers['content-type'],
         });
-        setWheatFeatureImage(URL.createObjectURL(imageBlob));
+        setToolsFeatureImage(URL.createObjectURL(imageBlob));
       })
       .catch((error) => {
-        console.error('Error fetching wheat feature image:', error);
+        console.error('Error fetching tools feature image:', error);
       });
   };
 
@@ -81,7 +79,7 @@ const WheatFeature = () => {
 
     axios
       .put(
-        'http://localhost:5000/api/wheat-feature-image/replace-wheat-feature-image',
+        'http://localhost:5000/api/tools-feature-image/replace-tools-feature-image',
         formData,
         {
           headers: {
@@ -91,7 +89,7 @@ const WheatFeature = () => {
       )
       .then((response) => {
         console.log('Image replaced successfully:', response.data);
-        fetchWheatFeatureImage();
+        fetchToolsFeatureImage();
         handleCloseModal();
       })
       .catch((error) => {
@@ -101,13 +99,14 @@ const WheatFeature = () => {
 
   return (
     <div className="listed-components">
+      {/* TOOLS FEATURE IMAGE */}
       <div className="single-component" onClick={handleOpenModal}>
-        <h4>Wheat Feature Image</h4>
-        {wheatFeatureImage && (
-          <img src={wheatFeatureImage} alt="Wheat Feature" />
+        <h4>Tools Feature Image</h4>
+        {toolsFeatureImage && (
+          <img src={toolsFeatureImage} alt="Tools Feature" />
         )}
       </div>
-      <WheatFeatureImageModal
+      <ToolsFeatureImageModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         handleImageChange={handleImageChange}
@@ -118,4 +117,4 @@ const WheatFeature = () => {
   );
 };
 
-export default WheatFeature;
+export default ToolsFeature;

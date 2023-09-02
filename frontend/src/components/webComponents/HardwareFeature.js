@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import PastaFeatureImageModal from '../PastaFeatureImageModal';
+import HardwareFeatureImageModal from '../HardwareFeatureImageModal';
 
-const PastaFeature = () => {
+const HardwareFeature = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [pastaFeatureImage, setPastaFeatureImage] = useState(null);
+  const [hardwareFeatureImage, setHardwareFeatureImage] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -16,7 +16,7 @@ const PastaFeature = () => {
   };
 
   useEffect(() => {
-    fetchPastaFeatureImage();
+    fetchHardwareFeatureImage();
   }, []);
 
   const handleImageChange = (event) => {
@@ -33,7 +33,7 @@ const PastaFeature = () => {
 
     axios
       .post(
-        'http://localhost:5000/api/pasta-feature-image/upload-pasta-feature-image',
+        'http://localhost:5000/api/hardware-feature-image/upload-hardware-feature-image',
         formData,
         {
           headers: {
@@ -45,17 +45,17 @@ const PastaFeature = () => {
         console.log('Image uploaded successfully:', response.data);
         handleCloseModal();
 
-        fetchPastaFeatureImage();
+        fetchHardwareFeatureImage();
       })
       .catch((error) => {
         console.error('Error uploading image:', error);
       });
   };
 
-  const fetchPastaFeatureImage = () => {
+  const fetchHardwareFeatureImage = () => {
     axios
       .get(
-        'http://localhost:5000/api/pasta-feature-image/get-pasta-feature-image',
+        'http://localhost:5000/api/hardware-feature-image/get-hardware-feature-image',
         {
           responseType: 'arraybuffer',
         }
@@ -64,10 +64,10 @@ const PastaFeature = () => {
         const imageBlob = new Blob([response.data], {
           type: response.headers['content-type'],
         });
-        setPastaFeatureImage(URL.createObjectURL(imageBlob));
+        setHardwareFeatureImage(URL.createObjectURL(imageBlob));
       })
       .catch((error) => {
-        console.error('Error fetching pasta feature image:', error);
+        console.error('Error fetching hardware feature image:', error);
       });
   };
 
@@ -81,7 +81,7 @@ const PastaFeature = () => {
 
     axios
       .put(
-        'http://localhost:5000/api/pasta-feature-image/replace-pasta-feature-image',
+        'http://localhost:5000/api/hardware-feature-image/replace-hardware-feature-image',
         formData,
         {
           headers: {
@@ -91,7 +91,7 @@ const PastaFeature = () => {
       )
       .then((response) => {
         console.log('Image replaced successfully:', response.data);
-        fetchPastaFeatureImage();
+        fetchHardwareFeatureImage();
         handleCloseModal();
       })
       .catch((error) => {
@@ -102,12 +102,12 @@ const PastaFeature = () => {
   return (
     <div className="listed-components">
       <div className="single-component" onClick={handleOpenModal}>
-        <h4>Pasta Feature Image</h4>
-        {pastaFeatureImage && (
-          <img src={pastaFeatureImage} alt="Pasta Feature" />
+        <h4>Hardware Feature Image</h4>
+        {hardwareFeatureImage && (
+          <img src={hardwareFeatureImage} alt="Hardware Feature" />
         )}
       </div>
-      <PastaFeatureImageModal
+      <HardwareFeatureImageModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         handleImageChange={handleImageChange}
@@ -118,4 +118,4 @@ const PastaFeature = () => {
   );
 };
 
-export default PastaFeature;
+export default HardwareFeature;

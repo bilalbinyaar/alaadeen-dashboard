@@ -3,7 +3,7 @@ import SideBar from '../../components/SideBar';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const UpdatePasta = () => {
+const UpdateHardware = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
@@ -61,7 +61,7 @@ const UpdatePasta = () => {
         productData
       );
       if (data?.success) {
-        navigate('/pasta');
+        navigate('/hardware');
       }
     } catch (error) {
       console.log(error);
@@ -109,7 +109,7 @@ const UpdatePasta = () => {
       );
       console.log(data);
       if (data?.success) {
-        navigate('/pasta');
+        navigate('/hardware');
       }
     } catch (error) {
       console.log(error);
@@ -218,4 +218,4 @@ const UpdatePasta = () => {
   );
 };
 
-export default UpdatePasta;
+export default UpdateHardware;

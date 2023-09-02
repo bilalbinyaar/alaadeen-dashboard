@@ -1,8 +1,8 @@
 import React from 'react';
 import SideBar from '../components/SideBar';
-import SaltFeature from '../components/webComponents/SaltFeature';
-import PastaFeature from '../components/webComponents/PastaFeature';
-import WheatFeature from '../components/webComponents/WheatFeature';
+import ToolsFeature from '../components/webComponents/ToolsFeature';
+import PartsFeature from '../components/webComponents/PartsFeature';
+import HardwareFeature from '../components/webComponents/HardwareFeature';
 
 const WebComponents = () => {
   return (
@@ -18,9 +18,9 @@ const WebComponents = () => {
             <button hidden>Add New</button>
           </div>
           <div className="listed-components">
-            <SaltFeature />
-            <PastaFeature />
-            <WheatFeature />
+            <ToolsFeature />
+            <PartsFeature />
+            <HardwareFeature />
           </div>
         </div>
       </div>

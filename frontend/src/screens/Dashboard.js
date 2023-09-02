@@ -23,19 +23,19 @@ const Dashboard = () => {
                 <h4>All Products</h4>
               </div>
             </Link>
-            <Link to="/salt">
+            <Link to="/tools">
               <div className="tile">
-                <h4>Salt Products</h4>
+                <h4>Tools Products</h4>
               </div>
             </Link>
-            <Link to="/pasta">
+            <Link to="/parts">
               <div className="tile">
-                <h4>Pasta Products</h4>
+                <h4>Parts Products</h4>
               </div>
             </Link>
-            <Link to="/wheat">
+            <Link to="/hardware">
               <div className="tile">
-                <h4>Wheat Products</h4>
+                <h4>Hardware Products</h4>
               </div>
             </Link>
             <Link to="/components">

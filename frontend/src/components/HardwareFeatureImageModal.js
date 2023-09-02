@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SaltFeatureImageModal = ({
+const HardwareFeatureImageModal = ({
   isOpen,
   onClose,
   handleImageChange,
@@ -26,11 +26,11 @@ const SaltFeatureImageModal = ({
           <button className="replace-btn" onClick={handleReplace}>
             Replace Image
           </button>
-          {/* <button onClick={handleUpload}>Upload Image</button> */}
+          <button onClick={handleUpload}>Upload Image</button>
         </div>
       </div>
     </div>
   );
 };
 
-export default SaltFeatureImageModal;
+export default HardwareFeatureImageModal;

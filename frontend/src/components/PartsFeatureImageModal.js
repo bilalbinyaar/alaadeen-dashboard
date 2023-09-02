@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PastaFeatureImageModal = ({
+const PartsFeatureImageModal = ({
   isOpen,
   onClose,
   handleImageChange,
@@ -33,4 +33,4 @@ const PastaFeatureImageModal = ({
   );
 };
 
-export default PastaFeatureImageModal;
+export default PartsFeatureImageModal;

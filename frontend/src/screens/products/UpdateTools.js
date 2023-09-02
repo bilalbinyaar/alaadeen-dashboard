@@ -3,7 +3,7 @@ import SideBar from '../../components/SideBar';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const UpdateSalt = () => {
+const UpdateTools = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
@@ -61,7 +61,7 @@ const UpdateSalt = () => {
         productData
       );
       if (data?.success) {
-        navigate('/salt');
+        navigate('/tools');
       }
     } catch (error) {
       console.log(error);
@@ -109,7 +109,7 @@ const UpdateSalt = () => {
       );
       console.log(data);
       if (data?.success) {
-        navigate('/salt');
+        navigate('/tools');
       }
     } catch (error) {
       console.log(error);
@@ -218,4 +218,4 @@ const UpdateSalt = () => {
   );
 };
 
-export default UpdateSalt;
+export default UpdateTools;

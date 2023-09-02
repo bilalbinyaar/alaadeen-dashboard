@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WheatFeatureImageModal = ({
+const ToolsFeatureImageModal = ({
   isOpen,
   onClose,
   handleImageChange,
@@ -26,11 +26,11 @@ const WheatFeatureImageModal = ({
           <button className="replace-btn" onClick={handleReplace}>
             Replace Image
           </button>
-          <button onClick={handleUpload}>Upload Image</button>
+          {/* <button onClick={handleUpload}>Upload Image</button> */}
         </div>
       </div>
     </div>
   );
 };
 
-export default WheatFeatureImageModal;
+export default ToolsFeatureImageModal;

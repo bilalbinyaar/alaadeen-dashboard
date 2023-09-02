@@ -176,74 +176,74 @@ exports.updateProductController = async (req, res) => {
 };
 
 // NEW CODE FOR CATEGORY PRODUCTS FETCHING
-exports.getSaltProducts = async (req, res) => {
+exports.getToolsProducts = async (req, res) => {
   try {
-    const saltsCategoryId = await CategoryController.getCategoryIdByName(
-      'Salts'
+    const toolsCategoryId = await CategoryController.getCategoryIdByName(
+      'Tools'
     );
-    const saltProducts = await ProductModel.find({
-      category: saltsCategoryId,
+    const toolsProducts = await ProductModel.find({
+      category: toolsCategoryId,
     }).populate('category');
 
     res.status(200).send({
       success: true,
-      message: 'Products with the category of "Salts"',
-      products: saltProducts,
+      message: 'Products with the category of "Tools"',
+      products: toolsProducts,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: 'Error fetching products with the category of "Salts"',
+      message: 'Error fetching products with the category of "Tools"',
     });
   }
 };
 
-exports.getPastaProducts = async (req, res) => {
+exports.getPartsProducts = async (req, res) => {
   try {
-    const pastaCategoryId = await CategoryController.getCategoryIdByName(
-      'Pasta'
+    const partsCategoryId = await CategoryController.getCategoryIdByName(
+      'Parts'
     );
-    const pastaProducts = await ProductModel.find({
-      category: pastaCategoryId,
+    const partsProducts = await ProductModel.find({
+      category: partsCategoryId,
     }).populate('category');
 
     res.status(200).send({
       success: true,
-      message: 'Products with the category of "Pasta"',
-      products: pastaProducts,
+      message: 'Products with the category of "Parts"',
+      products: partsProducts,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: 'Error fetching products with the category of "Pasta"',
+      message: 'Error fetching products with the category of "Parts"',
     });
   }
 };
 
-exports.getWheatFlourProducts = async (req, res) => {
+exports.getHardwareProducts = async (req, res) => {
   try {
-    const wheatFlourCategoryId = await CategoryController.getCategoryIdByName(
-      'Wheat Flour'
+    const hardwareCategoryId = await CategoryController.getCategoryIdByName(
+      'Hardware'
     );
-    const wheatFlourProducts = await ProductModel.find({
-      category: wheatFlourCategoryId,
+    const hardwareProducts = await ProductModel.find({
+      category: hardwareCategoryId,
     }).populate('category'); // Populate the category field
 
     res.status(200).send({
       success: true,
-      message: 'Products with the category of "Wheat Flour"',
-      products: wheatFlourProducts,
+      message: 'Products with the category of "Hardware"',
+      products: hardwareProducts,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: 'Error fetching products with the category of "Wheat Flour"',
+      message: 'Error fetching products with the category of "Hardware"',
     });
   }
 };

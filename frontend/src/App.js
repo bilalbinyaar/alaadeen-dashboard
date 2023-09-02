@@ -3,15 +3,15 @@ import { Route, Navigate, Routes } from 'react-router-dom';
 import Dashboard from './screens/Dashboard';
 import Categories from './screens/Categories';
 import AllProducts from './screens/AllProducts';
-import Salt from './screens/Salt';
-import Pasta from './screens/Pasta';
-import Wheat from './screens/Wheat';
+import Tools from './screens/Tools';
+import Parts from './screens/Parts';
+import Hardware from './screens/Hardware';
 import WebComponents from './screens/WebComponents';
 import Contacts from './screens/Contact';
 import UpdateProduct from './screens/products/UpdateProduct';
-import UpdateSalt from './screens/products/UpdateSalt';
-import UpdatePasta from './screens/products/UpdatePasta';
-import UpdateWheat from './screens/products/UpdateWheat';
+import UpdateTools from './screens/products/UpdateTools';
+import UpdateParts from './screens/products/UpdateParts';
+import UpdateHardware from './screens/products/UpdateHardware';
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -60,12 +60,12 @@ function App() {
       <Route path="/categories" element={<Categories />} />
       <Route path="/products" element={<AllProducts />} />
       <Route path="/products/:slug" element={<UpdateProduct />} />
-      <Route path="/salt/:slug" element={<UpdateSalt />} />
-      <Route path="/pasta/:slug" element={<UpdatePasta />} />
-      <Route path="/wheat/:slug" element={<UpdateWheat />} />
-      <Route path="/salt" element={<Salt />} />
-      <Route path="/pasta" element={<Pasta />} />
-      <Route path="/wheat" element={<Wheat />} />
+      <Route path="/tools/:slug" element={<UpdateTools />} />
+      <Route path="/parts/:slug" element={<UpdateParts />} />
+      <Route path="/hardware/:slug" element={<UpdateHardware />} />
+      <Route path="/tools" element={<Tools />} />
+      <Route path="/parts" element={<Parts />} />
+      <Route path="/hardware" element={<Hardware />} />
       <Route path="/components" element={<WebComponents />} />
       <Route path="/contacts" element={<Contacts />} />
     </Routes>

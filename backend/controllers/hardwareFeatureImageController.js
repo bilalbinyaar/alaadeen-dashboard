@@ -1,7 +1,7 @@
-const SaltFeatureImageModel = require('../schema/SaltFeatureImageModel.js');
+const HardwareFeatureImageModel = require('../schema/HardwareFeatureImageModel.js');
 const fs = require('fs');
 
-exports.uploadSaltFeatureImage = async (req, res) => {
+exports.uploadHardwareFeatureImage = async (req, res) => {
   try {
     const { image } = req.files;
 
@@ -11,48 +11,50 @@ exports.uploadSaltFeatureImage = async (req, res) => {
         .send({ error: 'Valid image is required and should be less than 1MB' });
     }
 
-    const saltFeatureImage = new SaltFeatureImageModel({
+    const hardwareFeatureImage = new HardwareFeatureImageModel({
       data: fs.readFileSync(image.path),
       contentType: image.contentType,
     });
 
-    await saltFeatureImage.save();
+    await hardwareFeatureImage.save();
 
     res.status(201).send({
       success: true,
-      message: 'Salt Feature Image Uploaded Successfully',
-      saltFeatureImage,
+      message: 'Hardware Feature Image Uploaded Successfully',
+      hardwareFeatureImage,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: 'Error uploading salt feature image',
+      message: 'Error uploading hardware feature image',
     });
   }
 };
 
-exports.getSaltFeatureImage = async (req, res) => {
+exports.getHardwareFeatureImage = async (req, res) => {
   try {
-    const saltFeatureImage = await SaltFeatureImageModel.findOne();
-    if (!saltFeatureImage) {
-      return res.status(404).send({ message: 'Salt Feature Image not found' });
+    const hardwareFeatureImage = await HardwareFeatureImageModel.findOne();
+    if (!hardwareFeatureImage) {
+      return res
+        .status(404)
+        .send({ message: 'Hardware Feature Image not found' });
     }
 
-    res.set('Content-type', saltFeatureImage.contentType);
-    return res.status(200).send(saltFeatureImage.data);
+    res.set('Content-type', hardwareFeatureImage.contentType);
+    return res.status(200).send(hardwareFeatureImage.data);
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: 'Error getting salt feature image',
+      message: 'Error getting hardware feature image',
     });
   }
 };
 
-exports.replaceSaltFeatureImage = async (req, res) => {
+exports.replaceHardwareFeatureImage = async (req, res) => {
   try {
     const { image } = req.files;
 
@@ -60,7 +62,7 @@ exports.replaceSaltFeatureImage = async (req, res) => {
       return res.status(400).send({ error: 'Invalid image' });
     }
 
-    const existingImage = await SaltFeatureImageModel.findOne();
+    const existingImage = await HardwareFeatureImageModel.findOne();
 
     if (!existingImage) {
       return res.status(404).send({ error: 'Image not found' });

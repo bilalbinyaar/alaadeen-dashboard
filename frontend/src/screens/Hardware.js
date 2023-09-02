@@ -2,13 +2,17 @@ import React, { useEffect, useState } from 'react';
 import SideBar from '../components/SideBar';
 import { Link } from 'react-router-dom';
 
-const Salt = () => {
-  const [saltProducts, setSaltProducts] = useState([]);
+const Hardware = () => {
+  const [hardwareProducts, setHardwareProducts] = useState([]);
+
   useEffect(() => {
-    fetch('http://localhost:5000/api/product/salt-products')
+    // Fetch products with the category of "Hardware"
+    fetch('http://localhost:5000/api/product/hardware-products')
       .then((response) => response.json())
-      .then((data) => setSaltProducts(data.products))
-      .catch((error) => console.error('Error fetching salt products:', error));
+      .then((data) => setHardwareProducts(data.products))
+      .catch((error) =>
+        console.error('Error fetching hardware products:', error)
+      );
   }, []);
   return (
     <div className="main-content">
@@ -16,19 +20,19 @@ const Salt = () => {
 
       <div className="content-wrapper">
         <div className="section-title">
-          <h2>Salt Products</h2>
+          <h2>Hardware Products</h2>
         </div>
 
         <div className="content-inner">
           <div className="categories-content">
             <div className="upper-content">
-              <h4>These are the all listed salt products</h4>
+              <h4>These are the all listed hardware products</h4>
               <button hidden>Add New</button>
             </div>
 
             <div className="body-content">
               <div className="product-card-listings-main">
-                {saltProducts?.map((product) => (
+                {hardwareProducts?.map((product) => (
                   <div
                     className="product-card-listings-inner"
                     key={product._id}
@@ -75,7 +79,7 @@ const Salt = () => {
                       </div>
                       <div className="edit-del edit-del-prods">
                         <Link
-                          to={`/salt/${product.slug}`}
+                          to={`/hardware/${product.slug}`}
                           className="product-link"
                         >
                           <button>Edit</button>
@@ -93,4 +97,4 @@ const Salt = () => {
   );
 };
 
-export default Salt;
+export default Hardware;
